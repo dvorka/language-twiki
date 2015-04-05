@@ -27,14 +27,14 @@
     'name': 'entity.name.function.preprocessor.twiki'
   }
 
-  # =code=
+  # =fixed=
   {
     'begin': '(?<=^|[^\\w\\d_])=(?!$|_|\\s)'
     'end': '(?<!^|\\s)=*=(?=$|[^\\w|\\d])'
     'name': 'entity.name.function.preprocessor.twiki'
   }
 
-  # ==bold code==
+  # ==bold fixed==
   {
     'begin': '(?<=^|[^\\w\\d_])==(?!$|_|\\s)'
     'end': '(?<!^|\\s)==*=(?=$|[^\\w|\\d])'
@@ -91,6 +91,11 @@
     'name': 'string.quoted.other.lt-gt.include.twiki'
   }
 
+  # --- horizontal ruler
+  {
+    'match': '^---$'
+    'name': 'variable.ordered.list.twiki'
+  }
 
   # ---+ section
   # ...
