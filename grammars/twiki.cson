@@ -5,30 +5,35 @@
   'twiki'
 ]
 'patterns': [
+
   # *bold*
   {
-    'begin': '(?<=^|[^\\w\\d\\*])\\*\\*\\*(?!$|\\*|\\s)'
-    'end': '(?<!^|\\s)\\*\\*\\**\\*(?=$|[^\\w|\\d])'
-    'name': 'markup.bold.italic.twiki'
+    'begin': '(?<=^|[^\\w\\d\\*])\\*(?!$|\\*|\\s)'
+    'end': '(?<!^|\\s)\\**\\*(?=$|[^\\w|\\d])'
+    'name': 'markup.italic.twiki'
   }
+
   # _italic_
   {
-    'begin': '(?<=^|[^\\w\\d_])___(?!$|_|\\s)'
-    'end': '(?<!^|\\s)___*_(?=$|[^\\w|\\d])'
-    'name': 'markup.bold.italic.twiki'
+    'begin': '(?<=^|[^\\w\\d_\\{\\}])_(?!$|_|\\s)'
+    'end': '(?<!^|\\s)_*_(?=$|[^\\w|\\d])'
+    'name': 'markup.italic.twiki'
   }
+
   # __bold italic__
   {
-    'begin': '(?<=^|[^\\w\\d_])___(?!$|_|\\s)'
-    'end': '(?<!^|\\s)___*_(?=$|[^\\w|\\d])'
-    'name': 'markup.bold.italic.twiki'
+    'begin': '(?<=^|[^\\w\\d_])__(?!$|_|\\s)'
+    'end': '(?<!^|\\s)__*_(?=$|[^\\w|\\d])'
+    'name': 'markup.bold.twiki'
   }
+
   # =code=
   {
     'begin': '(?<=^|[^\\w\\d_])=(?!$|_|\\s)'
     'end': '(?<!^|\\s)=*=(?=$|[^\\w|\\d])'
     'name': 'markup.italic.code.twiki'
   }
+
   # ==bold code==
   {
     'begin': '(?<=^|[^\\w\\d_])==(?!$|_|\\s)'
@@ -41,44 +46,29 @@
     'match': '^\\s*([*+-])[ \\t]+'
     'captures':
       '1':
-        'name': 'variable.unordered.list.gfm'
+        'name': 'variable.unordered.list.twiki'
   }
+
   # ordered list
   {
     'match': '^\\s*(\\d+\\.)[ \\t]+'
     'captures':
       '1':
-        'name': 'variable.ordered.list.gfm'
+        'name': 'variable.ordered.list.twiki'
   }
 
   # %variable%
   {
     'begin': '(?<=^|[^\\w\\d_])%(?!$|_|\\s)'
     'end': '(?<!^|\\s)%*%(?=$|[^\\w|\\d])'
-    'name': 'entity.name.function.preprocessor.c'
+    'name': 'entity.name.function.preprocessor.twiki'
   }
-  # TODO <nop> and TODO !nolink
-#  {
-#    'match': '\\b(nop|blah)\\b'
-#    'name': 'variable.parameter.preprocessor.c'
-#  }
-      {
-        'begin': '<'
-        'beginCaptures':
-          '0':
-            'name': 'punctuation.definition.string.begin.c'
-        'end': '>'
-        'endCaptures':
-          '0':
-            'name': 'punctuation.definition.string.end.c'
-        'name': 'string.quoted.other.lt-gt.include.c'
-      }
 
   # [[link][label]]
   {
     'begin': '\\[\\['
     'end': '\\]\\]'
-    'name': 'string.quoted.other.lt-gt.include.c'
+    'name': 'string.quoted.other.lt-gt.include.twiki'
   }
 
   # anchor
@@ -97,40 +87,30 @@
     'end': '$'
     'name': 'markup.bold.twiki'
   }
+
   # <!-- multiline comment -->
   {
     'begin': '<!--'
     'captures':
       '0':
-        'name': 'punctuation.definition.comment.gfm'
+        'name': 'punctuation.definition.comment.twiki'
     'end': '--\\s*>'
     'name': 'comment.block.gfm'
   }
 
-  {
-    'begin': '(?<=^|[^\\w\\d\\*])\\*\\*(?!$|\\*|\\s)'
-    'end': '(?<!^|\\s)\\*\\**\\*(?=$|[^\\w|\\d])'
-    'name': 'markup.bold.gfm'
-  }
-  {
-    'begin': '(?<=^|[^\\w\\d_])__(?!$|_|\\s)'
-    'end': '(?<!^|\\s)__*_(?=$|[^\\w|\\d])'
-    'name': 'markup.bold.gfm'
-  }
-  {
-    'begin': '(?<=^|[^\\w\\d\\*])\\*(?!$|\\*|\\s)'
-    'end': '(?<!^|\\s)\\**\\*(?=$|[^\\w|\\d])'
-    'name': 'markup.italic.gfm'
-  }
-  {
-    'begin': '(?<=^|[^\\w\\d_\\{\\}])_(?!$|_|\\s)'
-    'end': '(?<!^|\\s)_*_(?=$|[^\\w|\\d])'
-    'name': 'markup.italic.gfm'
-  }
-  {
-    'begin': '(?<=^|[^\\w\\d~])~~(?!$|~|\\s)'
-    'end': '(?<!^|\\s)~~*~(?=$|[^\\w|\\d])'
-    'name': 'markup.strike.gfm'
-  }
+  # !nolink
+  # ... TODO
 
+  # <nop>
+  {
+    'begin': '<'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.twiki'
+    'end': '>'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.twiki'
+    'name': 'string.quoted.other.lt-gt.include.twiki'
+  }
 ]
