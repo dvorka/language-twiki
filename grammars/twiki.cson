@@ -10,35 +10,35 @@
   {
     'begin': '(?<=^|[^\\w\\d\\*])\\*(?!$|\\*|\\s)'
     'end': '(?<!^|\\s)\\**\\*(?=$|[^\\w|\\d])'
-    'name': 'markup.italic.twiki'
+    'name': 'entity.name.function.preprocessor.twiki'
   }
 
   # _italic_
   {
     'begin': '(?<=^|[^\\w\\d_\\{\\}])_(?!$|_|\\s)'
     'end': '(?<!^|\\s)_*_(?=$|[^\\w|\\d])'
-    'name': 'markup.italic.twiki'
+    'name': 'entity.name.function.preprocessor.twiki'
   }
 
   # __bold italic__
   {
     'begin': '(?<=^|[^\\w\\d_])__(?!$|_|\\s)'
     'end': '(?<!^|\\s)__*_(?=$|[^\\w|\\d])'
-    'name': 'markup.bold.twiki'
+    'name': 'entity.name.function.preprocessor.twiki'
   }
 
   # =code=
   {
     'begin': '(?<=^|[^\\w\\d_])=(?!$|_|\\s)'
     'end': '(?<!^|\\s)=*=(?=$|[^\\w|\\d])'
-    'name': 'markup.italic.code.twiki'
+    'name': 'entity.name.function.preprocessor.twiki'
   }
 
   # ==bold code==
   {
     'begin': '(?<=^|[^\\w\\d_])==(?!$|_|\\s)'
     'end': '(?<!^|\\s)==*=(?=$|[^\\w|\\d])'
-    'name': 'markup.bold.italic.code.twiki'
+    'name': 'entity.name.function.preprocessor.twiki'
   }
 
   # unordered list *
@@ -57,11 +57,24 @@
         'name': 'variable.ordered.list.twiki'
   }
 
+  # %CODE{ ... %ENDOCODE%
+  {
+    'begin': '%CODE{'
+    'beginCaptures':
+      '0':
+        'name': 'code.block.begin.twiki'
+    'end': '%ENDCODE%'
+    'endCaptures':
+      '0':
+        'name': 'code.block.end.twiki'
+    'name': 'storage.type.c.twiki'
+  }
+
   # %variable%
   {
     'begin': '(?<=^|[^\\w\\d_])%(?!$|_|\\s)'
     'end': '(?<!^|\\s)%*%(?=$|[^\\w|\\d])'
-    'name': 'entity.name.function.preprocessor.twiki'
+    'name': 'variable.ordered.list.twiki'
   }
 
   # [[link][label]]
@@ -75,7 +88,7 @@
   {
     'begin': '^#'
     'end': '$'
-    'name': 'markup.bold.twiki'
+    'name': 'string.quoted.other.lt-gt.include.twiki'
   }
 
 
@@ -96,6 +109,19 @@
         'name': 'punctuation.definition.comment.twiki'
     'end': '--\\s*>'
     'name': 'comment.block.gfm'
+  }
+
+  # <verbatim> ... </>
+  {
+    'begin': '<verbatim>'
+    'beginCaptures':
+      '0':
+        'name': 'static.block.begin.twiki'
+    'end': '</verbatim>'
+    'endCaptures':
+      '0':
+        'name': 'static.block.end.twiki'
+    'name': 'storage.type.c.twiki'
   }
 
   # !nolink

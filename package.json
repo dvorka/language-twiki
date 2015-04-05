@@ -1,15 +1,14 @@
 {
   "name": "language-twiki",
   "version": "0.1.0",
-  "description": "Syntax highlighting and snippets for TWiki.",
+  "description": "Syntax highlighting and snippets for TWiki files in Atom.",
   "repository": "https://github.com/dvorka/language-twiki",
   "engines": {
-    "atom": "*"
+    "atom": "*",
+    "node": "*"
   },
-  "devDependencies": {
-    "coffee-script": "1.7.0",
-    "request": "^2.34.0",
-    "season": "^5.0.2",
-    "underscore-plus": "^1.0.6"
-  }
+  "bugs": {
+    "url": "https://github.com/dvorka/language-twiki/issues"
+  },
+  "license": "MIT"
 }
