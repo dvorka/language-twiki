@@ -1,0 +1,136 @@
+# TWiki grammar bound to Markdown and C/C++ styles
+'name': 'TWiki'
+'scopeName': 'source.twiki'
+'fileTypes': [
+  'twiki'
+]
+'patterns': [
+  # *bold*
+  {
+    'begin': '(?<=^|[^\\w\\d\\*])\\*\\*\\*(?!$|\\*|\\s)'
+    'end': '(?<!^|\\s)\\*\\*\\**\\*(?=$|[^\\w|\\d])'
+    'name': 'markup.bold.italic.twiki'
+  }
+  # _italic_
+  {
+    'begin': '(?<=^|[^\\w\\d_])___(?!$|_|\\s)'
+    'end': '(?<!^|\\s)___*_(?=$|[^\\w|\\d])'
+    'name': 'markup.bold.italic.twiki'
+  }
+  # __bold italic__
+  {
+    'begin': '(?<=^|[^\\w\\d_])___(?!$|_|\\s)'
+    'end': '(?<!^|\\s)___*_(?=$|[^\\w|\\d])'
+    'name': 'markup.bold.italic.twiki'
+  }
+  # =code=
+  {
+    'begin': '(?<=^|[^\\w\\d_])=(?!$|_|\\s)'
+    'end': '(?<!^|\\s)=*=(?=$|[^\\w|\\d])'
+    'name': 'markup.italic.code.twiki'
+  }
+  # ==bold code==
+  {
+    'begin': '(?<=^|[^\\w\\d_])==(?!$|_|\\s)'
+    'end': '(?<!^|\\s)==*=(?=$|[^\\w|\\d])'
+    'name': 'markup.bold.italic.code.twiki'
+  }
+
+  # unordered list *
+  {
+    'match': '^\\s*([*+-])[ \\t]+'
+    'captures':
+      '1':
+        'name': 'variable.unordered.list.gfm'
+  }
+  # ordered list
+  {
+    'match': '^\\s*(\\d+\\.)[ \\t]+'
+    'captures':
+      '1':
+        'name': 'variable.ordered.list.gfm'
+  }
+
+  # %variable%
+  {
+    'begin': '(?<=^|[^\\w\\d_])%(?!$|_|\\s)'
+    'end': '(?<!^|\\s)%*%(?=$|[^\\w|\\d])'
+    'name': 'entity.name.function.preprocessor.c'
+  }
+  # TODO <nop> and TODO !nolink
+#  {
+#    'match': '\\b(nop|blah)\\b'
+#    'name': 'variable.parameter.preprocessor.c'
+#  }
+      {
+        'begin': '<'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.string.begin.c'
+        'end': '>'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.string.end.c'
+        'name': 'string.quoted.other.lt-gt.include.c'
+      }
+
+  # [[link][label]]
+  {
+    'begin': '\\[\\['
+    'end': '\\]\\]'
+    'name': 'string.quoted.other.lt-gt.include.c'
+  }
+
+  # anchor
+  {
+    'begin': '^#'
+    'end': '$'
+    'name': 'markup.bold.twiki'
+  }
+
+
+  # ---+ section
+  # ...
+  # ---+++++ section
+  {
+    'begin': '^---\\+{1}\\s*'
+    'end': '$'
+    'name': 'markup.bold.twiki'
+  }
+  # <!-- multiline comment -->
+  {
+    'begin': '<!--'
+    'captures':
+      '0':
+        'name': 'punctuation.definition.comment.gfm'
+    'end': '--\\s*>'
+    'name': 'comment.block.gfm'
+  }
+
+  {
+    'begin': '(?<=^|[^\\w\\d\\*])\\*\\*(?!$|\\*|\\s)'
+    'end': '(?<!^|\\s)\\*\\**\\*(?=$|[^\\w|\\d])'
+    'name': 'markup.bold.gfm'
+  }
+  {
+    'begin': '(?<=^|[^\\w\\d_])__(?!$|_|\\s)'
+    'end': '(?<!^|\\s)__*_(?=$|[^\\w|\\d])'
+    'name': 'markup.bold.gfm'
+  }
+  {
+    'begin': '(?<=^|[^\\w\\d\\*])\\*(?!$|\\*|\\s)'
+    'end': '(?<!^|\\s)\\**\\*(?=$|[^\\w|\\d])'
+    'name': 'markup.italic.gfm'
+  }
+  {
+    'begin': '(?<=^|[^\\w\\d_\\{\\}])_(?!$|_|\\s)'
+    'end': '(?<!^|\\s)_*_(?=$|[^\\w|\\d])'
+    'name': 'markup.italic.gfm'
+  }
+  {
+    'begin': '(?<=^|[^\\w\\d~])~~(?!$|~|\\s)'
+    'end': '(?<!^|\\s)~~*~(?=$|[^\\w|\\d])'
+    'name': 'markup.strike.gfm'
+  }
+
+]
